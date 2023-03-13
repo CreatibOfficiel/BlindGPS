@@ -1,4 +1,4 @@
-package fr.upmfgrenoble.wicproject;
+package com.example.projetv2;
 
 /**
  * Created by thibaud on 06/11/15.

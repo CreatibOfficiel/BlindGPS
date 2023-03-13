@@ -17,7 +17,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import fr.upmfgrenoble.wicproject.Utils;
+import com.example.projetv2.Utils;
 
 /**
  * Created by thibaud on 04/11/15.
