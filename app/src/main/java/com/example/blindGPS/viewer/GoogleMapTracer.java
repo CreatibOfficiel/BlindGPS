@@ -1,5 +1,6 @@
 package com.example.blindGPS.viewer;
 
+import android.graphics.Color;
 import android.os.Environment;
 import android.util.Xml;
 
@@ -43,11 +44,20 @@ public class GoogleMapTracer {
 
     // Création d'un nouveau segment
     public void newSegment(){
+
         bufferPolyline.clear();
-        track.add(mGoogleMap.addPolyline(new PolylineOptions()));
+
+        Polyline line = mGoogleMap.addPolyline(new PolylineOptions());
+
+        track.add(line);
+
+        // avec une epaisseur
+        line.setWidth(5);
+        // et une couleur
+        line.setColor(Color.RED);
     }
 
-    // On cloture le segment en cours et on affiche le marker de fin
+    // Pour finir le segment en cours et ensuite afficher le marker de fin
     public void endSegment(){
         if(!bufferPolyline.isEmpty()){
             if(markerSimple != null) {
@@ -55,11 +65,10 @@ public class GoogleMapTracer {
                 markerSimple = null;
             }
             mGoogleMap.addMarker(new MarkerOptions().position(bufferPolyline.get(bufferPolyline.size()-1)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-            // mGoogleMap.addMarker(new MarkerOptions().position(bufferPolyline.get(bufferPolyline.size()-1)).icon(BitmapDescriptorFactory.fromResource(R.mipmap.trace_end)));
         }
     }
 
-    // Création d'un nouveau point sur la trace, on supprime la flèche de suivi et on l'affiche au nouvel androi
+    // Création d'un nouveau point sur la trace, on met a jour la fleche et on fait suivre la caméra de la map
     public void newPoint(LatLng point){
         if(markerSimple != null) {
             markerSimple.remove();
@@ -67,13 +76,11 @@ public class GoogleMapTracer {
         }
         if(bufferPolyline.isEmpty()){
             mGoogleMap.addMarker(new MarkerOptions().position(point).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-            // mGoogleMap.addMarker(new MarkerOptions().position(point).icon(BitmapDescriptorFactory.fromResource(R.mipmap.trace_start)));
         }else{
-            // markerSimple = mGoogleMap.addMarker(new MarkerOptions().position(point).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
             markerSimple = mGoogleMap.addMarker(new MarkerOptions().position(point).icon(BitmapDescriptorFactory.fromResource(R.mipmap.arrow)));
         }
 
-        // on fait suivre la caméra sur le nouveau point pour le garder centré
+        // on se positionne sur le point
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(point));
 
         bufferPolyline.add(point);
@@ -84,34 +91,29 @@ public class GoogleMapTracer {
         @Override
         public void rotationChanged(double angle) {
             if(markerSimple != null) {
-                // au changement de point, si l'angle à changé on change l'angle de l'icône utilisateur
+                // correspondance entre l'angle de l'orientation du téléphone et l'angle de la flèche
                 markerSimple.setRotation((float)Math.toDegrees(angle));
             }
         }
     };
 
-    // Exportation des traces en GPX
+    // Exportation des traces dans un fichier au format GPX
     public void exportToXML(String fileName){
         XmlSerializer xmlSerializer = Xml.newSerializer();
         StringWriter writer = new StringWriter();
 
-        // on construit le fichier gpx à partir du tableau track
+        // On cree le fichier GPX a partir du tableau de points
         try{
             xmlSerializer.setOutput(writer);
-            // début du document
             xmlSerializer.startDocument("UTF-8", true);
-            // tag: <GPX>
             xmlSerializer.startTag("", GPX);
             xmlSerializer.attribute("", "version", "1.1");
             xmlSerializer.attribute("", "xmlns", "http://www.topografix.com/GPX/1/1");
             xmlSerializer.attribute("", "xsi:schemaLocation", "http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd");
-            // tag: <TRK>
             xmlSerializer.startTag("", TRK);
             for (Polyline segment : track) {
-                // tag: <TRKSEG>
                 xmlSerializer.startTag("",TRKSEG);
                 for (LatLng point : segment.getPoints()){
-                    // tag: <TRKPT>
                     xmlSerializer.startTag("", TRKPT);
                     xmlSerializer.attribute("", LON, String.valueOf(point.longitude));
                     xmlSerializer.attribute("", LAT, String.valueOf(point.latitude));
@@ -121,19 +123,23 @@ public class GoogleMapTracer {
             }
             xmlSerializer.endTag("", TRK);
             xmlSerializer.endTag("", GPX);
-            // fin du document
             xmlSerializer.endDocument();
-            // création du fichier physique
+
+            // Création du fichier
             File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),fileName);
             if(!f.exists()){
                 f.createNewFile();
             }
             FileWriter fw = new FileWriter(f);
-            // Ecriture dans le fichier
+
+            // Ecriture des données dans le fichier
             fw.write(writer.toString());
-            // clôture du fichier
+
+            // Enregistrement du fichier
             fw.close();
+
         }catch (IOException io){
+            // recuperation de l'erreur
             System.err.println(io.getMessage());
         }
     }
