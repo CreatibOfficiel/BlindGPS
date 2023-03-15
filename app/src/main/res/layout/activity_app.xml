@@ -20,12 +20,44 @@
 
     <ImageView
         android:id="@+id/export"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/export"
-        android:layout_gravity="right|top"
+        android:layout_width="57dp"
+        android:layout_height="62dp"
+        android:layout_gravity="left|top"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:clickable="true"
+        android:foreground="@drawable/save_file"
         android:onClick="export"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/track"
+        android:layout_width="50dp"
+        android:layout_height="55dp"
+        android:layout_gravity="left|top"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:foreground="@drawable/pngitem_2166612"
+        android:onClick="showTrack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/localisation"
+        android:layout_width="50dp"
+        android:layout_height="55dp"
+        android:layout_gravity="left|top"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:foreground="@drawable/pointeur_de_localisation"
+        android:onClick="localisation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
