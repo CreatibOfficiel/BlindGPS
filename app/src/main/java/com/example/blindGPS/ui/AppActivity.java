@@ -1,6 +1,5 @@
-package com.example.wic.ui;
+package com.example.blindGPS.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
@@ -9,11 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.wic.R;
-import com.example.wic.pdr.DeviceAttitudeHandler;
-import com.example.wic.pdr.StepDetectionHandler;
-import com.example.wic.pdr.StepPositioningHandler;
-import com.example.wic.viewer.GoogleMapTracer;
+import com.example.blindGPS.R;
+import com.example.blindGPS.pdr.DeviceAttitudeHandler;
+import com.example.blindGPS.pdr.StepDetectionHandler;
+import com.example.blindGPS.pdr.StepPositioningHandler;
+import com.example.blindGPS.viewer.GoogleMapTracer;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

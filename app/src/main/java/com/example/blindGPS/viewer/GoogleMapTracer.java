@@ -1,10 +1,10 @@
-package com.example.wic.viewer;
+package com.example.blindGPS.viewer;
 
 import android.os.Environment;
 import android.util.Xml;
 
-import com.example.wic.R;
-import com.example.wic.pdr.DeviceAttitudeHandler;
+import com.example.blindGPS.R;
+import com.example.blindGPS.pdr.DeviceAttitudeHandler;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;

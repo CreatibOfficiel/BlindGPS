@@ -1,4 +1,4 @@
-package com.example.wic.ui;
+package com.example.blindGPS.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
 
-import com.example.wic.R;
-import com.example.wic.model.GPX;
+import com.example.blindGPS.R;
+import com.example.blindGPS.model.GPX;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

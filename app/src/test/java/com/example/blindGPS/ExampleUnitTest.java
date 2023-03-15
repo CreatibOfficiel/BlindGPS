@@ -1,4 +1,4 @@
-package com.example.wic;
+package com.example.blindGPS;
 
 import org.junit.Test;
 

@@ -1,14 +1,12 @@
-package com.example.wic.pdr;
+package com.example.blindGPS.pdr;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 
-import com.example.wic.R;
+import com.example.blindGPS.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

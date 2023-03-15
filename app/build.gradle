@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.wic'
+    namespace 'com.example.blindGPS'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.wic"
+        applicationId "com.example.blindGPS"
         minSdk 23
         targetSdk 33
         versionCode 1

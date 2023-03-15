@@ -1,9 +1,9 @@
-package com.example.wic.model;
+package com.example.blindGPS.model;
 
 import android.util.Log;
 
 
-import com.example.wic.Utils;
+import com.example.blindGPS.Utils;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 

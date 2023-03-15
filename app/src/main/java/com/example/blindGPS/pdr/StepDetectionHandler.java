@@ -1,4 +1,4 @@
-package com.example.wic.pdr;
+package com.example.blindGPS.pdr;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -6,7 +6,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
 
-import com.example.wic.Utils;
+import com.example.blindGPS.Utils;
 
 import java.util.ArrayList;
 

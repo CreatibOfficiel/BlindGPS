@@ -1,4 +1,4 @@
-package com.example.wic.pdr;
+package com.example.blindGPS.pdr;
 
 import com.google.android.gms.maps.model.LatLng;
 
