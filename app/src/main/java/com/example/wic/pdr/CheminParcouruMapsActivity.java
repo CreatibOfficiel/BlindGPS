@@ -54,7 +54,7 @@ public class CheminParcouruMapsActivity extends FragmentActivity implements OnMa
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         // On ajoute un marker avec les coordonnées de Grenoble puis on zoom et on centre la carte sur ce point
-        LatLng grenoble = new LatLng(45.192742, 5.773653);
+        LatLng grenoble = new LatLng(45.19275317406673, 5.7176893570083545);
         mMap.addMarker(new MarkerOptions().position(grenoble));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(grenoble));
         mMap.moveCamera(CameraUpdateFactory.zoomTo(10));
@@ -66,6 +66,16 @@ public class CheminParcouruMapsActivity extends FragmentActivity implements OnMa
         public void onNewStepDetected() {
             // On récupère l'angle
             double bearing = deviceAttitudeHandler.getBearing();
+
+            // On récupère les coordonnées du marker
+            LatLng marker = mMap.getCameraPosition().target;
+            // On calcule les nouvelles coordonnées du marker
+            LatLng newMarker = new LatLng(marker.latitude + TAILLEPAS * Math.cos(bearing), marker.longitude + TAILLEPAS * Math.sin(bearing));
+            // On déplace la caméra sur le nouveau marker
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(newMarker));
+
+            // On ajoute un marker avec les nouvelles coordonnées
+            mMap.addMarker(new MarkerOptions().position(newMarker));
         }
     };
 }

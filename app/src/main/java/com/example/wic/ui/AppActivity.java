@@ -76,9 +76,10 @@ public class AppActivity extends FragmentActivity implements OnMapReadyCallback 
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID); // vu satelitte de la map
         mMap.moveCamera(CameraUpdateFactory.zoomTo(20)); // on zoom pour un meilleur confort au départ
 
-        // centre la map sur un point pour ne pas trop cherche pour les tests
-        LatLng maison = new LatLng(45.594757, 5.872533);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(maison));
+        // centre la map sur un point dans Grenoble (IUT1)
+        // 45.19275317406673, 5.7176893570083545
+        LatLng grenoble = new LatLng(45.19275317406673, 5.7176893570083545);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(grenoble));
 
         mGoogleMapTracer = new GoogleMapTracer(mMap, deviceAttitudeHandler);
         mStepPositioningHandler = new StepPositioningHandler(null); // on défini une position initiale null pour ne pas avoir de point/marker avant un click de l'user

@@ -58,7 +58,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         d.getMetrics(m);
 
         // Le marker pointé sur Grenoble
-        LatLng grenoble = new LatLng(45.5948197, 5.8702473);
+        LatLng grenoble = new LatLng(45.19275317406673, 5.7176893570083545);
 
         mMap.addMarker(new MarkerOptions().position(grenoble).title("Marker Grenoble"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(gpx.getLatLngBounds(), m.widthPixels, m.heightPixels, 30));
