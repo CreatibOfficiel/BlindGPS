@@ -10,26 +10,45 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ProjetV2"
+        android:theme="@style/Theme.Wic"
         tools:targetApi="31">
+
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCcI5Ow1JiWELszVV2GUtWyCpFaqHwOgso"/>
+
         <activity
-            android:name=".Map"
-            android:exported="true"
-            android:label="test"
-            android:theme="@style/Theme.ProjetV2">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
+            android:name=".ui.AppActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
         <activity
-            android:name=".ui.MainActivity"
-            android:exported="true">
+            android:name=".ui.MapActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".pdr.CheminParcouruMapsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.MapActivity$MainActivity"
+            android:exported="false">
 
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.projetv2;
+package com.example.wic;
 
 import org.junit.Test;
 
