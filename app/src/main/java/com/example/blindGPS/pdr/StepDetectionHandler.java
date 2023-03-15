@@ -23,17 +23,18 @@ public class StepDetectionHandler implements SensorEventListener {
     }
 
     public void start(){
-        Log.d(Utils.LOG_TAG,"StepDetection started ...");
+        Log.d(Utils.LOG_TAG,"Detection de pas lancé");
         sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST);
     }
 
     public void stop(){
-        Log.d(Utils.LOG_TAG,"StepDetection STOP !");
+        Log.d(Utils.LOG_TAG,"Detection de pas arrêté  !");
         sensorManager.unregisterListener(this);
     }
 
     @Override
-    // On détecte un nouveau pas grâce à l'accéléromètre linéaire, le seuil est fixé plus haut à 3 (test pour le déduire grâce à l'application Sensor Kinetics)
+
+    // On detecte les pas grace a lacceleration lineaire, on prend la valeur de l'acceleration sur l'axe Z selon le seuil minimum et maximum
     public void onSensorChanged(SensorEvent event) {
         if(event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION){
             pas.add(event.values[2]);
@@ -50,7 +51,7 @@ public class StepDetectionHandler implements SensorEventListener {
                 if(moy < seuil)
                     overSeuil = false;
             } else {
-                if (moy >= seuil) { // si la valeur de mouvement est supérieur ou égale au pas alors on en déduit qu'un nouveau pas à été effectué
+                if (moy >= seuil) { // si la valeur moyenne est supérieur au seuil on considère que c'est un pas
                     stepDetectionListener.onNewStepDetected();
                     overSeuil = true;
                 }

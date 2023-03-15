@@ -60,7 +60,7 @@ public class AppActivity extends FragmentActivity implements OnMapReadyCallback 
         gpx = new GPX();
         // On essaie d'ouvrir le fichier .gpx
         try {
-            InputStream is = getAssets().open("simple.gpx");
+            InputStream is = getAssets().open("run.gpx");
             gpx = GPX.parse(is);
         } catch (IOException e) {
             e.printStackTrace();

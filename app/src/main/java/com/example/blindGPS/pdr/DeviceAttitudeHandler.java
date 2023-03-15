@@ -16,7 +16,8 @@ public class DeviceAttitudeHandler implements SensorEventListener {
     }
 
     public void start(){
-        // Ecoute le sensor a une fréquence rapide pour plus de précision
+        // instanciation du capteur
+        // on met a jour le capteur rapidement pour etre le plus précis possible
         sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST);
     }
 
@@ -26,7 +27,7 @@ public class DeviceAttitudeHandler implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        // Récupère le vecteur de rotation, puis on détermine l'angle sur un plan horizontal
+        //  on recupere l'orientation de l'appareil selon les informations du capteur
         if (event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR){
             float[] rotMat = new float[9];
             float[] values = new float[3];
